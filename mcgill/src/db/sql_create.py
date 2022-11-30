@@ -33,6 +33,15 @@ class Creation():
         except Error as e:
             return "Student registration failed"
 
+    def get_students_by_name(self, name):
+        c = self.connection.cursor()
+        try:
+            c.execute("SELECT * FROM students WHERE name='{}'".format(name))
+            print(c.fetchall())
+            self.connection.commit()
+        except Error as e:
+            return "Student retrieval failed"
+
         
 
 

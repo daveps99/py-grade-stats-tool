@@ -22,6 +22,8 @@ class Student():
         return self.major
 
     def post_student(self):
-        connection = Connection().create_connection("db/students.db")
+        connection = Connection().create_connection("../../students.db")
         Creation().create_student_table(connection)
         Creation().insert_student(connection, self)
+
+        
