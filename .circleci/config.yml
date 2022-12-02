@@ -1,5 +1,9 @@
 # Python CircleCI 2.0 configuration file
 version: 2
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.3
+
 jobs:
   build:
     docker:
@@ -16,5 +20,3 @@ jobs:
             . venv/bin/activate
             python3 -m unittest discover
 
-orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.3
