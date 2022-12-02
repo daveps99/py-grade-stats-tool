@@ -1,30 +1,35 @@
-from mcgill.src.db.sql_connect import Connection
 from mcgill.src.db.sql_create import Creation
 
-class Student():
 
-    def __init__(self, name, age, grade, major) -> None:
-        self.name = name
-        self.age = age
-        self.grade = grade
-        self.major = major
+class Sorting:
 
-    def get_name(self):
-        return self.name
+    def __init__(self) -> None:
+        pass
 
-    def get_age(self):
-        return self.age
+    def sortStudentsByGrade(self, studentName):
+        student_list = Creation().get_students_by_name(studentName)
+        student_list.sort(key = lambda x: x.grade)
+        return student_list
 
-    def get_grade(self):
-        return self.grade
+    def sortStudentsByName(self, studentName):
+        student_list = Creation().get_students_by_name(studentName)
+        student_list.sort(key = lambda x: x.name)
+        return student_list
 
-    def get_major(self):
-        return self.major
 
-    def post_student(self):
-        connection = Connection().create_connection("../../students.db")
-        Creation().create_student_table(connection)
-        Creation().insert_student(connection, self)
+    def sortStudentsByAge(self, studentName):
+        student_list = Creation().get_students_by_name(studentName)
+        student_list.sort(key = lambda x: x.age)
+        return student_list
 
-        
+    def sortStudentsByMajor(self, studentName):
+        student_list = Creation().get_students_by_name(studentName)
+        student_list.sort(key = lambda x: x.major)
+        return student_list
 
+
+
+
+
+
+    
