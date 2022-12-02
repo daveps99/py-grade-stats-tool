@@ -21,17 +21,17 @@ jobs:
 
   sonar:
     docker:
-        - image: circleci/python:3.7
+      - image: circleci/python:3.7
 
-      working_directory: ~/repo
+    working_directory: ~/repo
 
-      steps:
-        - checkout
-        - attach_workspace:
-            at: ~/repo
+    steps:
+      - checkout
+      - attach_workspace:
+        at: ~/repo
 
-        - sonarcloud/scan:
-            sonar_token_variable_name: SONAR_TOKEN
+      - sonarcloud/scan:
+        sonar_token_variable_name: SONAR_TOKEN
 
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.3
@@ -41,6 +41,6 @@ workflows:
     jobs:
       - build
       - sonar:
-          requires:
-            - test
+        requires:
+          - test
 
