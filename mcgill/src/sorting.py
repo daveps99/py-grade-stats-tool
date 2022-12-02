@@ -1,5 +1,9 @@
 from mcgill.src.db.sql_create import Creation
 
+NAME_INDEX = 0
+AGE_INDEX = 1
+GRADE_INDEX = 2
+MAJOR_INDEX = 3
 
 class Sorting:
 
@@ -8,23 +12,23 @@ class Sorting:
 
     def sortStudentsByGrade(self, studentName):
         student_list = Creation().get_students_by_name(studentName)
-        student_list.sort(key = lambda x: x.grade)
+        student_list.sort(key = lambda x: x[GRADE_INDEX])
         return student_list
 
     def sortStudentsByName(self, studentName):
         student_list = Creation().get_students_by_name(studentName)
-        student_list.sort(key = lambda x: x.name)
+        student_list.sort(key = lambda x: x[NAME_INDEX])
         return student_list
 
 
     def sortStudentsByAge(self, studentName):
         student_list = Creation().get_students_by_name(studentName)
-        student_list.sort(key = lambda x: x.age)
+        student_list.sort(key = lambda x: x[AGE_INDEX])
         return student_list
 
     def sortStudentsByMajor(self, studentName):
         student_list = Creation().get_students_by_name(studentName)
-        student_list.sort(key = lambda x: x.major)
+        student_list.sort(key = lambda x: x[MAJOR_INDEX])
         return student_list
 
 

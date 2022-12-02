@@ -37,10 +37,12 @@ class Creation():
         c = self.connection.cursor()
         try:
             c.execute("SELECT * FROM students WHERE name='{}'".format(name))
-            print(c.fetchall())
+            student_list = c.fetchall()
             self.connection.commit()
+            return student_list
         except Error as e:
             return "Student retrieval failed"
+
 
         
 
