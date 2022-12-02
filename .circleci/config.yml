@@ -5,7 +5,7 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.3
 
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/python:3.7
 
@@ -39,7 +39,7 @@ orbs:
 workflows:
   ci:
     jobs:
-      - test
+      - build
       - sonar:
           requires:
             - test
