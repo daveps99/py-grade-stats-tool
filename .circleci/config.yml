@@ -9,12 +9,12 @@ jobs:
 
     steps:
       - checkout
+      - sonarcloud/scan
       - run:
           name: run tests
           command: |
             . venv/bin/activate
             python3 -m unittest discover
-      - sonarcloud/scan
 
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.3
