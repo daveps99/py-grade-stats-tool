@@ -1,5 +1,5 @@
-# Python CircleCI 2.0 configuration file
-version: 2
+version: 2.1
+
 jobs:
   build:
     docker:
@@ -8,18 +8,34 @@ jobs:
     working_directory: ~/repo
 
     steps:
-      # Step 1: obtain repo from GitHub
-      - checkout 
-      # Step 2: create virtual env and install dependencies
-      - run:
-          name: install dependencies
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
-      # Step 3: run linter and tests
+      - checkout
       - run:
           name: run tests
           command: |
+            python3 -m venv venv
             . venv/bin/activate
             python3 -m unittest discover
+  sonar:
+    docker:
+      - image: circleci/python:3.7
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+
+      - sonarcloud/scan:
+          sonar_token_variable_name: SONAR_TOKEN
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.3
+
+workflows:
+  ci:
+    jobs:
+      - build
+      - sonar:
+          requires:
+            - build
