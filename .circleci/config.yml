@@ -18,9 +18,3 @@ jobs:
 
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.3
-
-workflows:
-  main:
-    jobs:
-      - build:
-          context: SonarCloud
