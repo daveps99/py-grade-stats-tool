@@ -13,6 +13,7 @@ jobs:
       - run:
           name: run tests
           command: |
+            python3 -m venv venv
             . venv/bin/activate
             python3 -m unittest discover
 
@@ -37,5 +38,7 @@ workflows:
   ci:
     jobs:
       - build
-      - sonar
+      - sonar:
+        requires:
+          - build
 
