@@ -15,10 +15,13 @@ class Calculator(object):
         self.answer = a-b
         return self.answer
 
-    def multiplication(self,a,b):
+    def multiplication(self,a,b):   
         self.answer = a*b
         return self.answer
 
     def division(self,a,b):
-        self.answer = a/b
+        if(b==0):
+            return "Cannot divide by 0"
+        else:
+            self.answer = a/b
         return self.answer

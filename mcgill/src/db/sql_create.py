@@ -14,7 +14,8 @@ class Creation():
                         name text,
                         age integer,
                         grade integer,
-                        major text
+                        major text,
+                        id integer
             )""")
             self.connection.commit()
         except:
@@ -23,15 +24,24 @@ class Creation():
     def insert_student(self, student):
         c = self.connection.cursor()
         try:
-            c.execute("INSERT INTO students VALUES ('{}', '{}', '{}', '{}')".format(
+            c.execute("INSERT INTO students VALUES ('{}', '{}', '{}', '{}', '{}')".format(
                 student.get_name(),
                 student.get_age(),
                 student.get_grade(),
-                student.get_major())
+                student.get_major(),
+                student.get_id())
                 )
             self.connection.commit()
         except Error as e:
             return "Student registration failed"
+
+    def remove_student(self, id):
+        c = self.connection.cursor()
+        try:
+            c.execute("DELETE FROM students WHERE id='{}'".format(id))
+            self.connection.commit()
+        except Error as e:
+            return "Removal failed"
 
     def get_students_by_name(self, name):
         c = self.connection.cursor()

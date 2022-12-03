@@ -6,7 +6,7 @@ GRADE_INDEX = 2
 class Statistics:
 
     def __init__(self) -> None:
-        pass
+        self.calc = Calculator()
 
     def get_grade_mean_by_name(self, name):
         student_list = Creation().get_students_by_name(name)
@@ -14,6 +14,6 @@ class Statistics:
 
         for student in student_list:
             grade = student[GRADE_INDEX]
-            sum += grade
+            sum = self.calc.addition(sum, grade)
 
-        return (sum/len(student_list))
+        return self.calc.division(sum, len(student_list))

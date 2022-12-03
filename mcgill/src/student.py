@@ -1,13 +1,15 @@
 from mcgill.src.db.sql_connect import Connection
 from mcgill.src.db.sql_create import Creation
+import random
 
 class Student():
 
-    def __init__(self, name, age, grade, major) -> None:
+    def __init__(self, name, age, grade, major, id) -> None:
         self.name = name
         self.age = age
         self.grade = grade
         self.major = major
+        self.id = id
 
     def get_name(self):
         return self.name
@@ -21,9 +23,7 @@ class Student():
     def get_major(self):
         return self.major
 
-    def post_student(self):
-        connection = Connection().create_connection("../../students.db")
-        Creation().create_student_table(connection)
-        Creation().insert_student(connection, self)
+    def get_id(self):
+        return self.id
 
-        
+
