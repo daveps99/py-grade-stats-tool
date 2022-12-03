@@ -23,6 +23,7 @@ class Student():
     def get_major(self):
         return self.major
 
+    #This id is unique to each student
     def get_id(self):
         return self.id
 
