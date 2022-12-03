@@ -16,7 +16,6 @@ jobs:
             . venv/bin/activate
             pip3 install -r requirements.txt
             python3 -m coverage run -m unittest
-            python3 -m coverage xml
   sonar:
     docker:
       - image: circleci/python:3.7
