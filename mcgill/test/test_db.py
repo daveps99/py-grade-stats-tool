@@ -36,5 +36,18 @@ class DBTest(unittest.TestCase):
 
         self.creation.remove_student(mockId)
 
+    def test_remove_student(self):
+        mockId = random.randint(100000000,999999999)
+        mockStudent = Student("REMOVE_TEST", 22, 85, "Software Engineering", mockId)
+
+        self.creation.create_student_table()
+        self.creation.insert_student(mockStudent)
+
+        self.creation.remove_student(mockId)
+
+        result = self.creation.get_students_by_name(mockStudent.get_name())
+
+        self.assertEqual(result, [])
+
 
 
