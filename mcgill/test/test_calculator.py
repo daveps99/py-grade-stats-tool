@@ -1,4 +1,3 @@
-import sys
 from mcgill.src.calculator import Calculator
 import unittest
 
@@ -23,5 +22,7 @@ class CalculatorTest(unittest.TestCase):
 
     def test_division(self):
         result = self.calc.division(10,5)
+        fail_result = self.calc.division(10,0)
 
         self.assertEqual(result, self.calc.answer, "incorrect")
+        self.assertEqual(fail_result, "Cannot divide by 0")

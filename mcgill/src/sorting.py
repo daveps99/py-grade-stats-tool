@@ -15,12 +15,6 @@ class Sorting:
         student_list.sort(key = lambda x: x[GRADE_INDEX])
         return student_list
 
-    def sortStudentsByName(self, studentName):
-        student_list = Creation().get_students_by_name(studentName)
-        student_list.sort(key = lambda x: x[NAME_INDEX])
-        return student_list
-
-
     def sortStudentsByAge(self, studentName):
         student_list = Creation().get_students_by_name(studentName)
         student_list.sort(key = lambda x: x[AGE_INDEX])
